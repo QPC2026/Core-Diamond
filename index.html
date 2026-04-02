@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="apple-touch-icon" href="https://tu-url-de-imagen.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DIAMOND CORE by CQP| Sistema Fotoluminiscente de Espectro Dual</title>
     <meta name="description" content="Sistema de recubrimiento fotoluminiscente premium Emerald 520nm & Ice Diamond 490nm para señalización de emergencia y decoración de lujo.">
     
-    <!-- Fonts -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Cinzel:wght@400;600;800&display=swap" rel="stylesheet">
@@ -992,13 +992,22 @@
 
         /* Responsive */
         @media (max-width: 968px) {
+            /* Fix Hero - Espacio para botones */
             .hero-diamond {
                 flex-direction: column;
+                height: auto; 
+                min-height: 100dvh;
             }
             
+            .split-side {
+                padding: 3rem 1.5rem; 
+            }
+
             .split-divider {
                 display: none;
             }
+            
+            /* VS badge sigue visible pero no empuja contenido problemático */
             
             .simulator-container,
             .specs-grid,
@@ -1016,6 +1025,44 @@
             
             .section-title {
                 font-size: 2rem;
+            }
+            
+            /* Fix Simulador a pantalla completa (Full Screen App Feel) */
+            .simulator-section {
+                padding: 4rem 5% 2rem 5%;
+                min-height: 100dvh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            
+            .simulator-container {
+                padding: 1.5rem;
+                gap: 1.5rem;
+            }
+            
+            .simulator-display {
+                min-height: 280px; /* Reduce altura del contenedor para evitar scroll */
+                padding: 1.5rem;
+            }
+            
+            .glow-preview {
+                width: 150px; /* Círculo más pequeño en móvil */
+                height: 150px;
+                margin-bottom: 1.5rem;
+            }
+
+            .readout-value {
+                font-size: 2.5rem;
+            }
+
+            /* Fix Especificaciones (Para que no se corten las tarjetas) */
+            .spec-card {
+                padding: 1.5rem; /* Menos relleno interno en móvil para aprovechar espacio */
+            }
+            
+            .spec-title {
+                font-size: 1.2rem;
             }
         }
 
@@ -1040,8 +1087,7 @@
 
     <canvas id="particle-canvas"></canvas>
 
-    <!-- Navegación -->
-        <script>
+    <script>
         // ============================================================
         // CONFIGURACIÓN DE VISIBILIDAD - EDITA AQUÍ
         // ============================================================
@@ -1051,20 +1097,16 @@
         // ============================================================
     </script>
 
-    <!-- NAVEGACIÓN -->
     <nav class="nav-diamond">
         <div class="logo-diamond">Diamond Core System</div>
         <ul class="nav-links">
             <li><a href="#simulator">Simulador</a></li>
-            <!-- Galería oculta condicionalmente -->
             <li id="nav-gallery" style="display: none;"><a href="#gallery">Aplicaciones</a></li>
             <li><a href="#specs">Especificaciones</a></li>
-            <!-- Cotizar oculto condicionalmente -->
             <li id="nav-quote" style="display: none;"><a href="#quote">Cotizar</a></li>
         </ul>
     </nav>
 
-    <!-- HERO SPLIT-SCREEN -->
     <section class="hero-diamond">
         <div class="split-side split-emerald" onclick="scrollToSection('specs')">
             <div class="split-content">
@@ -1103,7 +1145,6 @@
         </div>
     </section>
 
-    <!-- SIMULADOR DE INTENSIDAD -->
     <section id="simulator" class="simulator-section">
         <div class="section-header">
             <div class="section-tag">Laboratorio de Luz</div>
@@ -1175,7 +1216,6 @@
         </div>
     </section>
 
-    <!-- GALERÍA - OCULTA POR DEFECTO (style="display: none;") -->
     <section id="gallery" class="gallery-section" style="display: none;">
         <div class="section-header">
             <div class="section-tag">Aplicaciones Premium</div>
@@ -1248,7 +1288,6 @@
         </div>
     </section>
 
-    <!-- ESPECIFICACIONES TÉCNICAS -->
     <section id="specs" class="specs-section">
         <div class="section-header">
             <div class="section-tag">Datos Técnicos</div>
@@ -1314,7 +1353,6 @@
         </div>
     </section>
 
-    <!-- COTIZADOR - OCULTA POR DEFECTO (style="display: none;") -->
     <section id="quote" class="quote-section" style="display: none;">
         <div class="section-header">
             <div class="section-tag">Cotización Instantánea</div>
@@ -1395,7 +1433,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer-diamond">
         <div class="footer-logo">◆ Diamond Core System</div>
         <div class="footer-tagline">"Luz que Dura Generaciones"</div>
@@ -1707,4 +1744,5 @@ Por favor enviar propuesta técnica detallada.`;
         // Inicializar
         calculateIntensity();
     </script>
+</body>
 </html>
